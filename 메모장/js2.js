@@ -10,12 +10,26 @@ let toDoList = document.getElementById('toDoList');  // 리스트
 
 
 addToDo.addEventListener('click', function(){    // 버튼에 클릭 이벤트가 발생하면
+    // title 색상을 위한것 
+    let radios = document.querySelector('input[type=radio][name=flexRadioDefault]:checked'); // obiect 리턴
+    let color = radios.id; //pink 또는 gray가 저장된다
+    console.log(color);
 
     let layout = document.createElement('div');     
     layout.setAttribute("class","card");
     
-    let title = document.createElement('div');     
-    title.setAttribute("class","card-header");
+    let title = document.createElement('div');
+
+    if (color == "gray") {    
+        title.setAttribute("class","card-header");
+        title.setAttribute("style","background-color:gary");
+    }
+    else
+    {     
+        title.setAttribute("class","card-header");
+        title.setAttribute("style","background-color:pink");
+    }
+    
 
     let contain = document.createElement('div');     
     contain.setAttribute("class","card-body");
@@ -47,17 +61,7 @@ addToDo.addEventListener('click', function(){    // 버튼에 클릭 이벤트�
         inputBox.value= "";     // 할 일 입력창 초기화
     }
 
-    let radios = document.querySelector('input[type=radio][name=flexRadioDefault]:checked');
-    console.log(typeof(radios)); // obiect 리턴
-    let color = radios.id;
-    console.log(color);
-    if (color == "gray") {
-        document.getElementsByClassName("card-header")[1].setAttribute("style","background-color:gray;");
-    }
-    else
-    {
-        document.getElementsByClassName("card-header")[3].style.backgroundColor = "pink";
-    }
+    
 
     // 삭제하기 위한 버튼 함수
     delet.addEventListener('click', function(){ 
