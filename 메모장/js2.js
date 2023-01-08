@@ -1,6 +1,5 @@
-function getTime(){ //할일을 추가 할 때마다 시간이 변경되어야해서 인터벌 이용
+function getTime(){ 
     let date = new Date();
-    setInterval(getTime,1000);
     return date.toLocaleString('ko-kr');
 }
 // html의 정보를 가저오기위함 해당 id를 가진 요소가 변수에 저장된다
