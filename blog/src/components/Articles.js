@@ -2,9 +2,12 @@ import React from 'react';
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
+import Button from 'react-bootstrap/Button';
+import { useNavigate } from 'react-router-dom';
 
 
 function Articles(props) {
+    const navigate = useNavigate();
     const posts =[]
     for (let i =0; i<props.listArticles.length; i++){
         let a = props.listArticles[i];
@@ -23,9 +26,17 @@ function Articles(props) {
     }
 
     return (
-        <Row xs={1} md={2} className="g-4"> 
-            {posts}
-        </Row>
+        <>
+            <Row xs={4} md={2} className="g-4"> 
+                {posts}
+            </Row>
+            <div className="d-grid gap-2">
+                <Button variant="secondary" size="lg" onClick={() => navigate(-1)}>
+                    Back
+                </Button>
+            </div>
+        </>
+        
     );
 }
 export default Articles;

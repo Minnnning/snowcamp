@@ -2,6 +2,7 @@ import React from 'react';
 import UserIntro  from "./UserIntro"
 import Articles  from "./Articles"
 import Works  from "./Works"
+import NotFound  from "./NotFound"
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Nav from 'react-bootstrap/Nav';
@@ -22,9 +23,11 @@ function Menu(props) {
                 </Nav.Item>  
             </Nav>
             <Routes>
+                <Route path="/" element={<UserIntro tags ={props.tags} name = {props.name}/>}></Route>
                 <Route path="/info" element={<UserIntro tags ={props.tags} name = {props.name}/>}></Route>
                 <Route path="/articles" element={<Articles listArticles={props.listArticles}/>}></Route>
                 <Route path="/works" element={<Works images={props.images}/>}></Route>
+                <Route path="/*" element={<NotFound />}></Route>
             </Routes>
         </BrowserRouter>
         
