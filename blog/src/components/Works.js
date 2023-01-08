@@ -21,7 +21,7 @@ function Works(props) {
 
     return (
         <>
-            <Row xs={6} md={2} className="g-4"> 
+            <Row xs={2} md={2} className="g-4"> 
                 {posts}
             </Row>
             <div className="d-grid gap-2">
