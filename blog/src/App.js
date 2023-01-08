@@ -60,10 +60,10 @@ const App = () => {
     return (
 		<div className='App'>
 			<TopNav></TopNav>
-			<div>
+				<div style={{marginRight:'30%', marginLeft:'30%'}}>
 				<UserInfo name= {user.username} imgPath = {user.userImgPath} info = {user.userInfo}></UserInfo>
 				<Menu name= {user.username} tags = {user.tags} listArticles = {listArticles} images={images}></Menu>
-			</div>
+				</div>
 		</div>
 	);
 }
