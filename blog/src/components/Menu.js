@@ -19,7 +19,7 @@ function Menu(props) {
                     <Nav.Link href="/articles">글 {props.listArticles.length}</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                    <Nav.Link href="works">작품 {props.images.length}</Nav.Link>
+                    <Nav.Link href="/works">작품 {props.images.length}</Nav.Link>
                 </Nav.Item>  
             </Nav>
             <Routes>

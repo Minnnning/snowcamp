@@ -11,7 +11,7 @@ function Works(props) {
     for (let i =0; i<props.images.length; i++){
         let a = props.images[i];
         posts.push(
-            <Col >
+            <Col key={i}>
                 <Card>
                     <Card.Img variant="top" src={a.src} />
                 </Card>

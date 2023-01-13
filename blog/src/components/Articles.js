@@ -8,7 +8,22 @@ import { useNavigate } from 'react-router-dom';
 
 function Articles(props) {
     const navigate = useNavigate();
-    const posts =[]
+    const posts = props.listArticles.map((element,id) => (
+        <Col key={id}>
+            <Card >
+                <Card.Img variant="top" src={element.src} />
+                <Card.Body >
+                    <Card.Title>{element.title}</Card.Title>
+                    <Card.Text>{element.preview} </Card.Text>
+                    <Card.Text> <small >{element.createDate}</small></Card.Text>
+                </Card.Body>
+            </Card>
+        </Col>
+
+     ) );
+    console.log(posts)
+    
+    /*
     for (let i =0; i<props.listArticles.length; i++){
         let a = props.listArticles[i];
         posts.push(
@@ -23,7 +38,7 @@ function Articles(props) {
                 </Card>
             </Col>)
                
-    }
+    } */
 
     return (
         <>

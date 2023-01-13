@@ -6,10 +6,9 @@ function UserIntro(props) {
     const lis = []
     for (let i =0; i<props.tags.length; i++){
         let a = props.tags[i];
-        lis.push( <Button variant="outline-secondary" disabled >{a.name}</Button>);
-
-        
+        lis.push(<Button key={a.id} variant="outline-secondary" disabled >{a.name}</Button>);
     }
+    console.log(lis);
     return (
         <>
             <h4>소개</h4>
