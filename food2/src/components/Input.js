@@ -1,4 +1,5 @@
 import React,{ useState } from 'react';
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 
 function Input(props) {
     const btn = () => {
@@ -6,6 +7,6 @@ function Input(props) {
     }
     
 
-    return <button onClick={btn}>입력</button>
+    return <button onClick={btn}><Link to={props.text}>입력</Link></button>
 }
 export default Input;

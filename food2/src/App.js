@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import Input from './components/Input'
 import Search from "./components/Search"
 import React,{ useState } from 'react';
+import { BrowserRouter} from 'react-router-dom';
 import './App.css';
 
 function App() {
@@ -18,7 +19,8 @@ function App() {
 	function inputCheck(input) {
 		
 			if(input.length > 0){
-				return <Search name={input}/>
+				console.log("재검색?")
+				return <Search name={input} />
 			} else{
 				return <h1>입력된 값이 없습니다</h1>
 			}
@@ -28,12 +30,12 @@ function App() {
 	
 
     return (
-		<>	
+		<BrowserRouter>
 			<h1>음식 성분 분석</h1>
 			<input type="text" value={search} size="30" onChange={onChangeSearch} />
 			<Input text={search} changeBtn={onChangeInput}/>
 			{inputCheck(input)}
-		</>
+		</BrowserRouter>
     );
 }
 
