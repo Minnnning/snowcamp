@@ -6,7 +6,7 @@ function Input(props) {
         props.changeBtn(props.text);
     }
     
-
-    return <button onClick={btn}><Link to={props.text}>입력</Link></button>
+    // <button onClick={btn}>입력</button>
+    return <button onClick={btn}><Link to="/">입력</Link></button>
 }
 export default Input;

@@ -19,7 +19,6 @@ function App() {
 	function inputCheck(input) {
 		
 			if(input.length > 0){
-				console.log("재검색?")
 				return <Search name={input} />
 			} else{
 				return <h1>입력된 값이 없습니다</h1>
