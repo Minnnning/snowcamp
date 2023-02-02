@@ -9,6 +9,9 @@ class Food(BaseModel):
     food_name: str
     description: str
     
+class Food_modify(BaseModel):
+    description: str
+    
 url ="/Users/minnnning/Desktop/눈송이/fast_api/db/"
 
 @app.get("/")
@@ -49,3 +52,20 @@ def get_foods_len():
     size = len(file_list)
     
     return {"foods_num":size}
+
+@app.put('/food/change/{food_name}') # 내용 수정하기
+def put(food_name: str,food: Food_modify):
+    data = food.dict()
+    f = open(url+food_name+".txt", 'w')
+    f.write(data['description'])
+    
+    return {}
+
+@app.put('/food/change_all/{food_name}') # 제목 + 내용 수정하기
+def put(food_name: str,food: Food):
+    data = food.dict()
+    f = open(url+food_name+".txt", 'w')
+    f.write(data['description'])
+    os.rename(url+food_name+".txt", url+data['food_name']+'.txt')
+    
+    return {}
