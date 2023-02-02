@@ -1,4 +1,4 @@
-import React,{ useState,useEffect } from 'react';
+import React from 'react';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import Detail from './Detail';
 import './button.css';
@@ -6,7 +6,7 @@ import './button.css';
 function List(props) {
     let lis = [];
     let rout = [];
-    const [detail, setDetail] = useState(false);
+
     
     props.data.row.map((elem,id) => {
 
@@ -16,7 +16,7 @@ function List(props) {
     )
 
     /*
-    <h1>{props.name} 검색 결과</h1>
+                <h1>{props.name} 검색 결과</h1>
                 <Link to={props.data.row[0].FOOD_CD} ><button type="button" onClick={setDetail(true)}> {props.data.row[0].DESC_KOR} </button> </Link>
                 <Link to={props.data.row[1].FOOD_CD} ><button type="button" onClick={setDetail(true)}> {props.data.row[1].DESC_KOR} </button> </Link>
                 <Link to={props.data.row[2].FOOD_CD} ><button type="button" onClick={setDetail(true)}> {props.data.row[2].DESC_KOR} </button> </Link>

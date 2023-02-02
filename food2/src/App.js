@@ -14,6 +14,7 @@ function App() {
 	const onChangeInput = (e) => {
         setInput(e)
     }
+	console.log('search 스테이트:',search);
 	console.log('검색어',input);//input에는 검색 버튼을 눌렀을때 입력한 값
 
 	function inputCheck(input) {
