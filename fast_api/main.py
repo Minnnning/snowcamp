@@ -4,6 +4,23 @@ import os
 
 app = FastAPI()
 
+from fastapi import FastAPI
+from fastapi.responses import HTMLResponse
+from fastapi.middleware.cors import CORSMiddleware
+
+app = FastAPI()
+
+origins = [
+    "*"
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 class Food(BaseModel):
     food_name: str
@@ -19,7 +36,7 @@ def root():
     return {"냉장고"}
 
     
-@app.post('/food') #
+@app.post('/food/create') # 음식 저장하기
 def create_food(food: Food):
     data = food.dict()
     f = open(url+data['food_name']+".txt", 'w')
@@ -28,14 +45,16 @@ def create_food(food: Food):
 
     return { 'food_name':data['food_name'],'description':data['description']}
 
-@app.delete('/food/{food_name}')
+@app.delete('/food/delete/{food_name}') #삭제
 def delete_food(food_name: str):
     f = open(url+food_name+".txt", 'r')
     data = f.readline()
-    os.remove(r"/Users/minnnning/Desktop/눈송이/fast_api/db/"+food_name+".txt")
+    f.close()
+    os.remove(f"/Users/minnnning/Desktop/눈송이/fast_api/db/{food_name}.txt")
+    
     return {data}
 
-@app.get('/food')
+@app.get('/food') #저장된 음식 이름을 출력
 def get_foods():
     foods_list = []
     file_list = os.listdir(url)
@@ -43,10 +62,11 @@ def get_foods():
         f = open(url+file, 'r')
         text = f.readline()
         foods_list.append({"food_name":file[:-4],"description":text})
+        f.close()
     
     return {"foods":foods_list}
 
-@app.get('/foods')
+@app.get('/foods') #저장된 음식 개수
 def get_foods_len():
     file_list = os.listdir(url)
     size = len(file_list)
@@ -58,6 +78,7 @@ def put(food_name: str,food: Food_modify):
     data = food.dict()
     f = open(url+food_name+".txt", 'w')
     f.write(data['description'])
+    f.close()
     
     return {}
 
@@ -66,6 +87,7 @@ def put(food_name: str,food: Food):
     data = food.dict()
     f = open(url+food_name+".txt", 'w')
     f.write(data['description'])
+    f.close()
     os.rename(url+food_name+".txt", url+data['food_name']+'.txt')
     
     return {}
